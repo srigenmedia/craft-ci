@@ -1,0 +1,26 @@
+name: "CraftCI UX & Billing-Safety Gate"
+description: "Run CraftCI 20-rule UX craft, 5-posture Playwright/Axe & billing-safety CI gate on a repository or live preview URL."
+inputs:
+  repo:
+    description: "Repository path to audit"
+    required: false
+    default: "."
+  url:
+    description: "Optional live preview URL for Playwright 5-posture & Axe audit"
+    required: false
+    default: ""
+  min-score:
+    description: "Minimum Craft Score required to pass (0-100)"
+    required: false
+    default: "85"
+runs:
+  using: "composite"
+  steps:
+    - name: Run CraftCI Audit
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.url }}" ]; then
+          npx @srigenmedia/craft-ci audit --url "${{ inputs.url }}" --min-score "${{ inputs.min-score }}" --format md >> "$GITHUB_STEP_SUMMARY"
+        else
+          npx @srigenmedia/craft-ci audit --repo "${{ inputs.repo }}" --min-score "${{ inputs.min-score }}" --format md >> "$GITHUB_STEP_SUMMARY"
+        fi

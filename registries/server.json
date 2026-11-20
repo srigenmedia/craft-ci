@@ -1,0 +1,32 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.srigenmedia/craft-ci",
+  "title": "CraftCI — Automated UX Craft & Billing-Safety CI Gate",
+  "description": "Automated 20-rule UX craft, 5-posture Playwright/Axe & billing-safety CI gate + MCP server.",
+  "version": "0.1.0",
+  "websiteUrl": "https://craft.srigenmedia.com",
+  "repository": {
+    "url": "https://github.com/srigenmedia/craft-ci",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/srigenmedia/craft-ci/main/assets/icon.svg",
+      "mimeType": "image/svg+xml"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://craft.srigenmedia.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer API key issued at https://craft.srigenmedia.com",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

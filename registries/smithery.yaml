@@ -1,0 +1,10 @@
+name: craft-ci
+displayName: CraftCI
+description: Automated 20-rule UX craft, 5-posture Playwright/Axe & billing-safety CI gate + MCP server.
+homepage: https://craft.srigenmedia.com
+repository: https://github.com/srigenmedia/craft-ci
+transport:
+  type: streamable-http
+  url: https://craft.srigenmedia.com/mcp
+  headers:
+    Authorization: "Bearer ${CRAFT_CI_API_KEY}"
